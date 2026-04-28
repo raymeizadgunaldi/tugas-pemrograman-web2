@@ -14,6 +14,8 @@
     <ul class="list-group">
         @foreach ($kendaraans as $kendaraan)
         <li class="list-group-item">{{ $loop->iteration }}. {{ $kendaraan->merek }} -- {{ $kendaraan->tipe }} -- {{ $kendaraan->warna }} -- {{ $kendaraan->tahun }} -- {{ $kendaraan->platnomor }} -- {{ $kendaraan->bahanbakar }}
+            <a class="btn btn-warning btn-sm" href="{{ route('kendaraan.edit', $kendaraan) }}" role="button">Edit</a>
+
         </li>
         @endforeach
     </ul>
