@@ -2,6 +2,11 @@
 
     <x-slot:title>{{ $title }}</x-slot>
 
-
-   <h1 class="fw-bold">Data Kendaraan</h1>
+    <ul class="list-group">
+        @foreach ($kendaraans as $kendaraan)
+        <li class="list-group-item">{{ $loop->iteration }}. {{ $kendaraan->merek }} -- {{ $kendaraan->tipe }} -- {{ $kendaraan->warna }} -- {{ $kendaraan->tahun }} -- {{ $kendaraan->platnomor }} -- {{ $kendaraan->bahanbakar }}
+        </li>
+        @endforeach
+    </ul>
+   
 </x-app>

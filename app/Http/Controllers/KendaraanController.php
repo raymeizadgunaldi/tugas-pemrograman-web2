@@ -12,7 +12,10 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        //
+        return view('kendaraan.index', [
+            'title' => 'Kendaraan',
+            'kendaraans' => Kendaraan::all(),
+            ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class KendaraanController extends Controller
      */
     public function create()
     {
-        //
+        return view('kendaraan.create', ['title' => 'Create Kendaraan']);
     }
 
     /**
