@@ -31,7 +31,31 @@ class KendaraanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $validated = $request->validate([
+        'merek' => 'required|max:255',
+        'tipe'  => 'required|max:255',
+        'warna' => 'required|max:255',
+        'tahun' => 'required|integer',
+        'platnomor'  => 'required|max:255|unique:kendaraans',
+        'bahanbakar' => 'required|max:255',
+    ], [
+        'merek.required' => 'merek tidak boleh kosong',
+        'merek.max' => 'merek tidak boleh lebih dari :max karakter',
+        'tipe.required' => 'tipe tidak boleh kosong',
+        'tipe.max' => 'merek tidak boleh lebih dari :max karakter',
+        'warna.required' => 'warna tidak boleh kosong',
+        'warna.max' => 'merek tidak boleh lebih dari :max karakter',
+        'tahun.required' => 'tahun tidak boleh kosong',
+        'tahun.integer' => 'tahun harus berupa angka',
+        'platnomor.required' => 'plat nomor tidak boleh kosong',
+        'platnomor.max' => 'merek tidak boleh lebih dari :max karakter',
+        'bahanbakar.required' => 'bahan bakar tidak boleh kosong',
+        'bahanbakar.max' => 'merek tidak boleh lebih dari :max karakter',
+       
+    ]);
+
+      Kendaraan::create($validated);
+      return to_route('kendaraan.index')->withSuccess('data berhasil ditambahkan');
     }
 
     /**
