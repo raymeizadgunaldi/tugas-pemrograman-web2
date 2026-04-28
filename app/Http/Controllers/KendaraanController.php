@@ -14,7 +14,8 @@ class KendaraanController extends Controller
     {
         return view('kendaraan.index', [
             'title' => 'Kendaraan',
-            'kendaraans' => Kendaraan::all(),
+            'kendaraans' => Kendaraan::latest()->get(),
+           // 'kendaraans' => Kendaraan::orderBy('merek', 'asc')->get(),
             ]);
     }
 
@@ -114,6 +115,7 @@ class KendaraanController extends Controller
      */
     public function destroy(Kendaraan $kendaraan)
     {
-        //
+      $kendaraan->delete($kendaraan);
+      return to_route('kendaraan.index')->withSuccess('data berhasil dihapus');
     }
 }
