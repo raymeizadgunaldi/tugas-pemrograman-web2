@@ -64,7 +64,10 @@ class MerekController extends Controller
      */
     public function show(Merek $merek)
     {
-        //
+          return view('merek.show', [
+            'title' => 'Detail Merek ' . $merek->merek_kendaraan,
+            'merek' => $merek,
+        ]);
     }
 
     /**

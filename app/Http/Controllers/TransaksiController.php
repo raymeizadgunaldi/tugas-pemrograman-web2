@@ -13,10 +13,23 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-            return view('transaksi.index', [
-            'title' => 'Transaksi',
-            'transaksis' => Transaksi::latest()->get(),
-            ]);
+          $transaksis = Transaksi::latest();
+ 
+        $keyword = request('keyword');
+        if ($keyword) {
+            $transaksis->where('name', 'like', '%' . $keyword . '%');
+        }
+ 
+        $merek_id = request('merek_id');
+        if ($merek_id) {
+            $transaksis->where('merek_id', $merek_id);
+        }
+ 
+        return view('transaksi.index', [
+            'title'      => 'Transaksi',
+            'mereks'     => Merek::latest()->get(),
+            'transaksis' => $transaksis->paginate(5)->withQueryString(),
+        ]);
     }
 
     /**
