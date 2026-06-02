@@ -72,7 +72,10 @@ class MerekController extends Controller
      */
     public function edit(Merek $merek)
     {
-        //
+         return view('merek.edit', [
+            'title' => 'Edit Merek',
+            'merek' => $merek,
+        ]);
     }
 
     /**
@@ -80,7 +83,23 @@ class MerekController extends Controller
      */
     public function update(Request $request, Merek $merek)
     {
-        //
+          $validated = $request->validate([
+            'merek_kendaraan' => 'required|max:255',
+            'negara'          => 'required|max:255',
+            'tahun_berdiri'   => 'required|integer|min:1800|max:' . date('Y'),
+        ], [
+            'merek_kendaraan.required' => 'Merek kendaraan tidak boleh kosong',
+            'merek_kendaraan.max'      => 'Merek kendaraan tidak boleh lebih dari :max karakter',
+            'negara.required'          => 'Negara tidak boleh kosong',
+            'negara.max'               => 'Negara tidak boleh lebih dari :max karakter',
+            'tahun_berdiri.required'   => 'Tahun berdiri tidak boleh kosong',
+            'tahun_berdiri.integer'    => 'Tahun berdiri harus berupa angka',
+            'tahun_berdiri.min'        => 'Tahun berdiri tidak valid',
+            'tahun_berdiri.max'        => 'Tahun berdiri tidak boleh melebihi tahun sekarang',
+        ]);
+ 
+        $merek->update($validated);
+        return to_route('merek.index')->withSuccess('Data merek berhasil diubah');
     }
 
     /**
