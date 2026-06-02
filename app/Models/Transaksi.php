@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
-#[Fillable(['merek_id', 'tanggal_transaksi','durasi','harga','status'])]
+#[Fillable(['name','merek_id', 'tanggal_transaksi','durasi','harga','status'])]
 class Transaksi extends Model
 {
     /** @use HasFactory<\Database\Factories\TransaksiFactory> */

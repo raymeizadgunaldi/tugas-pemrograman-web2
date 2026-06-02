@@ -13,7 +13,7 @@
 
     <ul class="list-group">
         @foreach ($transaksis as $transaksi)
-        <li class="list-group-item">{{ $loop->iteration }}. -- {{ $transaksi->merek->merek_kendaraan }}
+        <li class="list-group-item">{{ $loop->iteration }}. {{ $transaksi->name }} -- {{ $transaksi->merek->merek_kendaraan }}
              -- {{ $transaksi->tanggal_transaksi }} -- {{ $transaksi->durasi }} -- {{ $transaksi->harga }} -- {{ $transaksi->status }} 
             <a class="btn btn-warning btn-sm" href="{{ route('transaksi.edit', $transaksi) }}" role="button">Edit</a>
 

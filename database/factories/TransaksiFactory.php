@@ -21,6 +21,7 @@ class TransaksiFactory extends Factory
     {
         return [
              'merek_id' => Merek::inRandomOrder()->first()->id,
+             'name' => fake()->name(),
              'tanggal_transaksi' => fake()->date(),
             'durasi' => fake()->numberBetween(1,30),
             'harga' => fake()->numberBetween(100000,5000000),

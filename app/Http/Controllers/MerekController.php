@@ -12,10 +12,18 @@ class MerekController extends Controller
      */
     public function index()
     {
-               return view('merek.index', [
-            'title' => 'Merek',
-            'mereks' => Merek::latest()->get(),
-            ]);
+            $mereks = Merek::latest();
+    $keyword = request('keyword');
+    if($keyword) {
+        $mereks->where('merek_kendaraan', 'like', '%'. $keyword . '%')
+               ->orWhere('negara', 'like', '%'. $keyword . '%')
+               ->orWhere('tahun_berdiri', 'like', '%'. $keyword . '%');
+    }
+
+    return view('merek.index', [
+        'title' => 'Merek',
+        'mereks' => $mereks->paginate(5)->withQueryString(),
+    ]);
     }
     /**
      * Show the form for creating a new resource.
