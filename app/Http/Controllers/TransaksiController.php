@@ -66,7 +66,10 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-        //
+             return view('transaksi.show', [
+            'title' => 'Detail Transaksi',
+            'transaksi' => $transaksi,
+            ]);
     }
 
     /**

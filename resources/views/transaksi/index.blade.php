@@ -15,6 +15,7 @@
         @foreach ($transaksis as $transaksi)
         <li class="list-group-item">{{ $loop->iteration }}. {{ $transaksi->name }} -- {{ $transaksi->merek->merek_kendaraan }}
              -- {{ $transaksi->tanggal_transaksi }} -- {{ $transaksi->durasi }} -- {{ $transaksi->harga }} -- {{ $transaksi->status }} 
+            <a class="btn btn-info btn-sm" href="{{ route('transaksi.show', $transaksi) }}" role="button">Detail</a>
             <a class="btn btn-warning btn-sm" href="{{ route('transaksi.edit', $transaksi) }}" role="button">Edit</a>
 
             <form action="{{ route('transaksi.destroy', $transaksi) }}" method="POST" class="d-inline">

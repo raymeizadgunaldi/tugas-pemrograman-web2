@@ -9,7 +9,7 @@
   <body>
 
     {{-- navigasi --}}
-    <nav class="navbar navbar-expand-lg bg-danger navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-warning">
   <div class="container">
     <a class="navbar-brand" href="#">BENGKEL PAK SLAMET</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
