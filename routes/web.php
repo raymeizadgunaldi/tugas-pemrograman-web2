@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\MerekController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [KendaraanController::class, 'index']);
@@ -11,3 +13,6 @@ Route::post('/kendaraan/store', [KendaraanController::class, 'store'])->name('ke
 Route::get('/kendaraan/{kendaraan}/edit', [KendaraanController::class, 'edit'])->name('kendaraan.edit');
 Route::put('/kendaraan/{kendaraan}', [KendaraanController::class, 'update'])->name('kendaraan.update');
 Route::delete('/kendaraan/{kendaraan}', [KendaraanController::class, 'destroy'])->name('kendaraan.destroy');
+
+Route::resource('merek', MerekController::class);
+Route::resource('transaksi', TransaksiController::class);

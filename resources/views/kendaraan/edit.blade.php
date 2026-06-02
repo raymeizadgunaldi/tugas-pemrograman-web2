@@ -7,15 +7,6 @@
     @method('PUT')
 
         <div class="mb-3">
-            <label for="merek" class="form-label">Merek</label>
-            <input type="text" class="form-control @error('merek') is-invalid @enderror" id="merek" name="merek" value="{{ old('merek', $kendaraan->merek) }}">
-             @error('merek')
-             <div class="invalid-feedback">{{ $message }}</div>
-             @enderror
-
-        </div>
-
-        <div class="mb-3">
             <label for="tipe" class="form-label">Tipe</label>
             <input type="text" class="form-control @error('tipe') is-invalid @enderror" id="tipe" name="tipe" value="{{ old('tipe', $kendaraan->tipe) }}">
              @error('tipe')

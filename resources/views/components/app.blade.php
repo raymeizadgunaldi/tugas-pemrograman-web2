@@ -8,6 +8,23 @@
   </head>
   <body>
 
+    {{-- navigasi --}}
+    <nav class="navbar navbar-expand-lg bg-danger navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">BENGKEL PAK SLAMET</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link active" href="{{ route('kendaraan.index') }}">Kendaraan</a>
+        <a class="nav-link active" href="{{ route('merek.index') }}">Merek</a>
+        <a class="nav-link active" href="{{ route('transaksi.index') }}">Transaksi</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
     {{-- page title --}}
     <div class="bg-danger py-5 text-center text-white">
         <h1 class="fw-bold">{{ $title }}</h1>

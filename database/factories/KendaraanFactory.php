@@ -18,7 +18,6 @@ class KendaraanFactory extends Factory
     public function definition(): array
     {
         return [
-            'merek' => fake()->randomElement(['Toyota', 'Honda', 'Suzuki', 'Mitsubishi', 'Daihatsu']),
             'tipe' => fake()->randomElement(['Sedan', 'SUV', 'MPV', 'Hatchback', 'Pick Up']),
             'warna' => fake()->randomElement(['Hitam', 'Putih', 'Merah', 'Silver', 'Biru']),
             'tahun' => fake()->numberBetween(2000, 2024),
