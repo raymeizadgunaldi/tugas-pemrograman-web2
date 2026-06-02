@@ -107,6 +107,7 @@ class MerekController extends Controller
      */
     public function destroy(Merek $merek)
     {
-        //
+        $merek->delete( $merek);
+    return to_route('merek.index')->withSuccess('Data merek berhasil dihapus');
     }
 }
