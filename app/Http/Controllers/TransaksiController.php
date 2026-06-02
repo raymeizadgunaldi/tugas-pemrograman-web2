@@ -74,7 +74,11 @@ class TransaksiController extends Controller
      */
     public function edit(Transaksi $transaksi)
     {
-        //
+           return view('transaksi.edit', [
+            'title' => 'Edit Transaksi',
+            'mereks' => Merek::latest()->get(),
+            'transaksi' => $transaksi,
+            ]);
     }
 
     /**
@@ -82,7 +86,30 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, Transaksi $transaksi)
     {
-        //
+                 $validated = $request->validate([
+       'merek_id'          => 'required|exists:mereks,id',
+        'name'              => 'required|max:255',
+        'tanggal_transaksi' => 'required',
+        'durasi'            => 'required|integer',
+        'harga'             => 'required|integer',
+        'status'            => 'required|in:Pending,Selesai,Dibatalkan',
+    ], [
+        'merek_id.required'          => 'Merek tidak boleh kosong',
+        'merek_id.exists'            => 'Merek yang dipilih tidak ditemukan',
+        'name.required'              => 'Nama tidak boleh kosong',
+        'name.max'                   => 'Nama tidak boleh lebih dari :max karakter',
+        'tanggal_transaksi.required' => 'Tanggal transaksi tidak boleh kosong',
+        'durasi.required'            => 'Durasi tidak boleh kosong',
+        'durasi.integer'             => 'Durasi harus berupa angka',
+        'harga.required'             => 'Harga tidak boleh kosong',
+        'harga.integer'              => 'Harga harus berupa angka',
+        'status.required'            => 'Status tidak boleh kosong',
+        'status.in'                  => 'Status tidak valid',
+       
+    ]);
+
+      $transaksi->update($validated);
+      return to_route('transaksi.index')->withSuccess('data berhasil diubah');
     }
 
     /**
