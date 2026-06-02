@@ -30,7 +30,9 @@ class MerekController extends Controller
      */
     public function create()
     {
-      
+      return view('merek.create', [
+            'title' => 'merek',
+            ]);
     }
 
     /**
