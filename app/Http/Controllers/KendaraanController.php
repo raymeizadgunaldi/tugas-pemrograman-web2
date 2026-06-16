@@ -141,7 +141,14 @@ class KendaraanController extends Controller
     {
      return view('kendaraan.trash', [
         'title' => 'Trash Kendaraan',
-        'students' => Kendaraan::onlyTrashed()->latest()->get(),
+        'kendaraans' => Kendaraan::onlyTrashed()->latest()->get(),
         ]);
     }
+
+      public function restore(Kendaraan $kendaraan)
+    {
+        $kendaraan->restore();
+          return to_route('kendaraan.trash')->withSuccess('Data berhasil dikembalikan');
+    }
+
 }
