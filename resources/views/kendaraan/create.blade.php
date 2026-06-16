@@ -44,6 +44,14 @@
              <div class="invalid-feedback">{{ $message }}</div>
              @enderror
         </div>
+        
+        <div class="mb-3">
+            <label for="negara_asal" class="form-label">Negara Asal</label>
+            <input type="text" class="form-control @error('negara_asal') is-invalid @enderror" id="negara_asal" name="negara_asal" value="{{ old('negara_asal') }}">
+             @error('negara_asal')
+             <div class="invalid-feedback">{{ $message }}</div>
+             @enderror
+        </div>
        
     <a class="btn btn-warning" href="{{ route('kendaraan.index') }}" role="button">Cancel</a>
 
