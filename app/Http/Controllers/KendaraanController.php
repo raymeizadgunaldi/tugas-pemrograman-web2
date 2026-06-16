@@ -41,6 +41,7 @@ class KendaraanController extends Controller
         'platnomor'  => 'required|max:255|unique:kendaraans',
         'bahanbakar' => 'required|max:255',
         'negara_asal' => 'required|max:255',
+        
     ], [
         'tipe.required' => 'tipe tidak boleh kosong',
         'tipe.max' => 'merek tidak boleh lebih dari :max karakter',
@@ -98,6 +99,8 @@ class KendaraanController extends Controller
         'tahun' => 'required|integer',
         'platnomor'  => 'required|max:255|unique:kendaraans',
         'bahanbakar' => 'required|max:255',
+        'negara_asal' => 'required|max:255',
+
     ], [
         'tipe.required' => 'tipe tidak boleh kosong',
         'tipe.max' => 'merek tidak boleh lebih dari :max karakter',
@@ -109,11 +112,19 @@ class KendaraanController extends Controller
         'platnomor.max' => 'merek tidak boleh lebih dari :max karakter',
         'bahanbakar.required' => 'bahan bakar tidak boleh kosong',
         'bahanbakar.max' => 'merek tidak boleh lebih dari :max karakter',
+        'negara_asal.required' => 'Negara asal tidak boleh kosong',
+        'negara_asal.max'      => 'Negara asal tidak boleh lebih dari :max karakter',
        
     ]);
-
-     $kendaraan->update($validated);
-      return to_route('kendaraan.index')->withSuccess('data berhasil diubah');
+        try {
+            DB::beginTransaction();
+            $kendaraan->update($validated);
+            DB::commit();
+            return to_route('kendaraan.index')->withSuccess('Data kendaraan berhasil diubah');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return to_route('kendaraan.edit', $kendaraan)->withError('Data kendaraan gagal diubah');
+        }
     }
 
     /**
