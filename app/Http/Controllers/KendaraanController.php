@@ -151,4 +151,10 @@ class KendaraanController extends Controller
           return to_route('kendaraan.trash')->withSuccess('Data berhasil dikembalikan');
     }
 
+    public function forceDelete(Kendaraan $kendaraan)
+    {
+        $kendaraan->forceDelete();
+          return to_route('kendaraan.trash')->withSuccess('Data berhasil dihapus secara permanen');
+    }
+
 }
