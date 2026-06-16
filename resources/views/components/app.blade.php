@@ -20,6 +20,7 @@
         <a class="nav-link active" href="{{ route('kendaraan.index') }}">Kendaraan</a>
         <a class="nav-link active" href="{{ route('merek.index') }}">Merek</a>
         <a class="nav-link active" href="{{ route('transaksi.index') }}">Transaksi</a>
+        <a class="nav-link active" href="{{ route('kendaraan.trash') }}">Trash</a>
       </div>
     </div>
   </div>

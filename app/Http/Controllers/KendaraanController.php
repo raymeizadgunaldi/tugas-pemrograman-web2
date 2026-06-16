@@ -135,4 +135,13 @@ class KendaraanController extends Controller
       $kendaraan->delete($kendaraan);
       return to_route('kendaraan.index')->withSuccess('data berhasil dihapus');
     }
+
+        //soft deletes
+        public function trash()
+    {
+     return view('kendaraan.trash', [
+        'title' => 'Trash Kendaraan',
+        'students' => Kendaraan::onlyTrashed()->latest()->get(),
+        ]);
+    }
 }

@@ -14,5 +14,8 @@ Route::get('/kendaraan/{kendaraan}/edit', [KendaraanController::class, 'edit'])-
 Route::put('/kendaraan/{kendaraan}', [KendaraanController::class, 'update'])->name('kendaraan.update');
 Route::delete('/kendaraan/{kendaraan}', [KendaraanController::class, 'destroy'])->name('kendaraan.destroy');
 
+//soft deletes
+Route::get('/kendaraan/trash', [KendaraanController::class, 'trash'])->name('kendaraan.trash');
+
 Route::resource('merek', MerekController::class);
 Route::resource('transaksi', TransaksiController::class);
