@@ -17,9 +17,15 @@ class TransaksiController extends Controller
  
         $keyword = request('keyword');
         if ($keyword) {
-            $transaksis->where('name', 'like', '%' . $keyword . '%');
+            $transaksis->where('name', 'like', '%' . $keyword . '%')
+                        ->orWhere('tanggal_transaksi', 'like', '%'. $keyword . '%')
+                        ->orWhere('durasi', 'like', '%'. $keyword . '%')
+                        ->orWhere('harga', 'like', '%'. $keyword . '%')
+                        ->orWhere('status', 'like', '%'. $keyword . '%')
+            ->orWhereHas('merek', function ($query) use ($keyword) {
+            $query->where('merek_kendaraan', 'like', '%' . $keyword . '%');
+});
         }
- 
         $merek_id = request('merek_id');
         if ($merek_id) {
             $transaksis->where('merek_id', $merek_id);
